@@ -1,0 +1,13 @@
+#!/bin/sh -e
+
+libdir="C:/Users/Kuju/Projects/nghttp2-jai/nghttp2/cmake-build-relwithdebinfo/lib"
+if [ -d "$libdir/.libs" ]; then
+    libdir="$libdir/.libs"
+fi
+
+export CGO_CFLAGS="-IC:/Users/Kuju/Projects/nghttp2-jai/nghttp2/lib/includes -IC:/Users/Kuju/Projects/nghttp2-jai/nghttp2/cmake-build-relwithdebinfo/lib/includes "
+export CGO_CPPFLAGS=""
+export CGO_LDFLAGS="-L$libdir "
+export LD_LIBRARY_PATH="$libdir"
+export GODEBUG=cgocheck=0
+"$@"
